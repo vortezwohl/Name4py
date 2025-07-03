@@ -17,9 +17,12 @@ class Generator(object):
         with open(self._resource_path, 'r', encoding='utf-8') as r:
             self._resource = json.load(r)
 
-    def __call__(self, gender: Gender, surname_first: bool = False, hyphenate: bool = True):
+    def next_name(self, gender: Gender, family_name: str | None = None, surname_first: bool = False, hyphenate: bool = True):
         first_name = random.sample(self._resource['first_name'][gender.value], k=1)[0]
-        last_name = random.sample(self._resource['last_name'], k=1)[0]
+        if family_name is None:
+            last_name = random.sample(self._resource['last_name'], k=1)[0]
+        else:
+            last_name = family_name
         segment = ' ' if hyphenate else ''
         if surname_first:
             first_name, last_name = last_name, first_name
@@ -28,4 +31,4 @@ class Generator(object):
 
 if __name__ == '__main__':
     for _ in range(100):
-        print(Generator(Country.USA)(Gender.Female, surname_first=False, hyphenate=True), end=', ')
+        print(Generator(Country.CHN).next_name(Gender.Male, surname_first=True, hyphenate=False, family_name='必养的'), end=', ')
