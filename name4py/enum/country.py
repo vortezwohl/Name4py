@@ -121,7 +121,7 @@ class Country(Enum):
     MLT = ('Republic of Malta', 'Malta', '470', 'MT')
     GHA = ('Republic of Ghana', 'Ghana', '288', 'GH')
     CRI = ('Republic of Costa Rica', 'Costa Rica', '188', 'CR')
-    RUS = ('Russian Federation', 'Russian Federation', '643', 'RU')
+    RUS = ('Russian Federation', 'Russian', '643', 'RU')
     IND = ('Republic of India', 'India', '356', 'IN')
     CHN = ("People's Republic of China", 'China', '156', 'CN')
     BFA = ('Burkina Faso', 'Burkina Faso', '854', 'BF')
