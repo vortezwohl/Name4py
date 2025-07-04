@@ -4,13 +4,13 @@ Generate names in every language.
 
 ## Installation
 
-- From PyPi
+- From [PyPi](https://pypi.org/project/name4py/)
 
 ```
 pip install -U name4py
 ```
 
-- From Github
+- From [Github](https://github.com/vortezwohl/Name4py/releases/tag/0.0.1)
 
 ```
 pip install git+https://github.com/vortezwohl/Name4py.git
