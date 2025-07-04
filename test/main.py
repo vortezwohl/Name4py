@@ -1,5 +1,8 @@
 from name_generator import NameGenerator, Country, Gender
 
-if __name__ == '__main__':
-    for _ in range(10):
-        print(NameGenerator(Country.CHN).next_name(Gender.Female, surname_first=False, hyphenate=True), end=', ')
+
+chinese_name = NameGenerator(Country.CHN).next_name(Gender.Female, surname_first=True, hyphenate=False)
+french_name = NameGenerator(Country.FRA).next_name(Gender.Male, surname_first=False, hyphenate=True)
+
+print('Chinese name', chinese_name)
+print('French name', french_name)
