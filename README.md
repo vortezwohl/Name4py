@@ -1,4 +1,4 @@
-# Name Generator
+# Name4py
 
 Generate names in every language.
 
@@ -7,13 +7,13 @@ Generate names in every language.
 - From PyPi
 
 ```
-pip install -U name-generator
+pip install -U name4py
 ```
 
 - From Github
 
 ```
-pip install git+https://github.com/vortezwohl/NameGenerator.git
+pip install git+https://github.com/vortezwohl/Name4py.git
 ```
 
 ## Quick Start
@@ -21,7 +21,7 @@ pip install git+https://github.com/vortezwohl/NameGenerator.git
 1. Import SDKs
 
 ```python
-from name_generator import NameGenerator, Country, Gender
+from name4py import NameGenerator, Country, Gender
 ```
 
 2. Generate names
@@ -32,13 +32,13 @@ french_name = NameGenerator(Country.FRA).next_name(Gender.Male, surname_first=Fa
 ```
 
 ```python
-print('Chinese name', chinese_name)
-print('French name', french_name)
+print(chinese_name)
+print(french_name)
 ```
 
 output:
 
 ```
-Chinese name 蒋佳慧
-French name Lisandre Derouin
+高思涵
+Frédérick St-Martin
 ```

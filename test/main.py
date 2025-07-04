@@ -1,4 +1,4 @@
-from name_generator import NameGenerator, Country, Gender
+from name4py import NameGenerator, Country, Gender
 
 
 chinese_name = NameGenerator(Country.CHN).next_name(Gender.Female, surname_first=True, hyphenate=False)

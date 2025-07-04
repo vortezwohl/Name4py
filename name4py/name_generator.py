@@ -5,9 +5,9 @@ import random
 import gdown
 import requests
 
-from name_generator.enum.country import Country
-from name_generator.enum.gender import Gender
-from name_generator.resource import __PATH__
+from name4py.enum.country import Country
+from name4py.enum.gender import Gender
+from name4py.resource import __PATH__
 
 
 class NameGenerator(object):
@@ -16,7 +16,7 @@ class NameGenerator(object):
         self._resource_path = os.path.join(__PATH__, f'{self._country.numeric}.json')
         self._resource = None
         if not os.path.exists(self._resource_path):
-            url = f'https://github.com/vortezwohl/NameGenerator/releases/download/0.0.0/{self._country.numeric}.json'
+            url = f'https://github.com/vortezwohl/Name4py/releases/download/0.0.0/{self._country.numeric}.json'
             if requests.get(url=url).status_code == 200:
                 try:
                     gdown.download(

@@ -1,5 +1,5 @@
 [project]
-name = "name-generator"
+name = "name4py"
 version = "0.0.1"
 description = "Generate names in every language."
 readme = "README.md"
