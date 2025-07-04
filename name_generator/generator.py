@@ -20,6 +20,8 @@ class Generator(object):
     def next_name(self, gender: Gender, family_name: str | None = None, surname_first: bool = False, hyphenate: bool = True):
         first_name = random.sample(self._resource['first_name'][gender.value], k=1)[0]
         last_name = random.sample(self._resource['last_name'], k=1)[0] if not family_name else family_name
+        while first_name in last_name:
+            first_name = random.sample(self._resource['first_name'][gender.value], k=1)[0]
         segment = ' ' if hyphenate else ''
         if surname_first:
             first_name, last_name = last_name, first_name
@@ -27,5 +29,5 @@ class Generator(object):
 
 
 if __name__ == '__main__':
-    for _ in range(100):
-        print(Generator(Country.CHN).next_name(Gender.Male, surname_first=True, hyphenate=False, family_name='必养的'), end=', ')
+    for _ in range(100000):
+        print(Generator(Country.USA).next_name(Gender.Male, surname_first=False, hyphenate=True), end=', ')
