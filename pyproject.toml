@@ -1,6 +1,6 @@
 [project]
 name = "name4py"
-version = "0.0.1"
+version = "0.1.0"
 description = "Generate names in every language."
 readme = "README.md"
 requires-python = ">=3.10"
