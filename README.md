@@ -27,18 +27,39 @@ from name4py import NameGenerator, Country, Gender
 2. Generate names
 
 ```python
-chinese_name = NameGenerator(Country.CHN).next_name(Gender.Female, surname_first=True, hyphenate=False)
-french_name = NameGenerator(Country.FRA).next_name(Gender.Male, surname_first=False, hyphenate=True)
-```
+available_countries = [Country.CAN, Country.CHN, Country.FRA,
+                       Country.DEU, Country.IDN, Country.JPN,
+                       Country.KOR, Country.PHL, Country.PRT,
+                       Country.RUS, Country.VNM, Country.ESP,
+                       Country.THA, Country.GBR, Country.USA]
 
-```python
-print(chinese_name)
-print(french_name)
+
+for country in available_countries:
+    surname_first = False
+    hyphenate = True
+    if country in [Country.CHN, Country.JPN, Country.KOR, Country.VNM]:
+        surname_first = True
+    if country in [Country.CHN, Country.KOR, Country.JPN]:
+        hyphenate = False
+    print(NameGenerator(country).generate(Gender.Female, surname_first=surname_first, hyphenate=hyphenate))
 ```
 
 output:
 
 ```
-高思涵
-Frédérick St-Martin
+Pénélope Farrell
+汤雨桐
+Cléopâtre Fromont
+Alla Koslowski
+Suciati Arsyad
+金田理枝
+남궁계영
+Fiona Sobrino
+Glauce Caldeira
+Татьяна Наумов
+Giáp Châu Hoa
+Paulina Monreal
+ธนัญญา กสิกร
+Gunda Dawson
+Dione Kidd
 ```
