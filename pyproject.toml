@@ -1,10 +1,10 @@
 [project]
 name = "name4py"
-version = "0.1.1"
+version = "0.1.2"
 description = "Generate names in every language."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "gdown",
-    "vortezwohl>=0.0.2",
+    "vortezwohl>=0.0.3",
 ]
