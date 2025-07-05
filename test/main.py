@@ -1,39 +1,23 @@
-import json
-
+import pandas as pd
 from name4py import NameGenerator, Country, Gender
-from name4py.resource import __PATH__
 
+available_countries = [Country.CAN, Country.CHN, Country.FRA,
+                       Country.DEU, Country.IDN, Country.JPN,
+                       Country.KOR, Country.PHL, Country.PRT,
+                       Country.RUS, Country.VNM, Country.ESP,
+                       Country.THA, Country.GBR, Country.USA]
 
-print(NameGenerator(Country.CHN).next_name(Gender.Female, surname_first=True, hyphenate=False))
-print(NameGenerator(Country.CAN).next_name(Gender.Male, surname_first=False, hyphenate=True))
-print(NameGenerator(Country.PRT).next_name(Gender.Male, surname_first=False, hyphenate=True))
-print(NameGenerator(Country.ESP).next_name(Gender.Male, surname_first=False, hyphenate=True))
-print(NameGenerator(Country.DEU).next_name(Gender.Female, surname_first=False, hyphenate=True))
+name_dataset = []
 
+for country in available_countries:
+    for gender in Gender:
+        for _ in range(10):
+            surname_first = True if country in [Country.CHN, Country.JPN, Country.KOR, Country.VNM] else False
+            hyphenate = False if country in [Country.CHN, Country.KOR] else True
+            name_dataset.append({
+                '国家/地区': country.official_name,
+                '性别': gender.value,
+                '全名': NameGenerator(country).generate(gender, surname_first=surname_first, hyphenate=hyphenate)
+            })
 
-def read_json(file_name: str) -> dict | list:
-    with open(file_name, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-
-def write_json(data: dict, file_name: str):
-    with open(file_name, 'w', encoding='utf-8') as f:
-        return json.dump(data, f)
-
-
-def combine(data_1: dict, data_2: dict) -> dict:
-    data_1['first_name']['female'].extend(data_2['first_name']['female'])
-    data_1['first_name']['female'] = list(set(data_1['first_name']['female']))
-    data_1['first_name']['male'].extend(data_2['first_name']['male'])
-    data_1['first_name']['male'] = list(set(data_1['first_name']['male']))
-    data_1['last_name'].extend(data_2['last_name'])
-    data_1['last_name'] = list(set(data_1['last_name']))
-    return data_1
-
-
-# data1 = read_json(f'{__PATH__}/840.json')
-# data2 = read_json(f'{__PATH__}/250.json')
-# print(write_json(combine(data1, data2), f'{__PATH__}/124.json'))
-
-# for _ in range(100):
-#     print(NameGenerator(Country.GBR).next_name(Gender.Female, surname_first=False, hyphenate=True))
+pd.DataFrame(name_dataset).to_csv('name_dataset.csv', index=False)
