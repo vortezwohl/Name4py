@@ -14,4 +14,4 @@ for country in available_countries:
         surname_first = True
     if country in [Country.CHN, Country.KOR, Country.JPN]:
         hyphenate = False
-    print(NameGenerator(country).generate(Gender.Female, surname_first=surname_first, hyphenate=hyphenate))
+    print(NameGenerator(country).batch_generate(batch_size=32, gender=Gender.Female, surname_first=surname_first, hyphenate=hyphenate))
