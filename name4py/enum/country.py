@@ -119,6 +119,7 @@ class Country(Enum):
     EST = ('Republic of Estonia', 'Estonia', '233', 'EE')
     TWN = ('Taiwan, Province of China', 'Taiwan', '158', 'TW')
     THA = ('Kingdom of Thailand', 'Thailand', '764', 'TH')
+    VNM = ('Socialist Republic of Vietnam', 'Vietnam', '704', 'VN')
     MLT = ('Republic of Malta', 'Malta', '470', 'MT')
     GHA = ('Republic of Ghana', 'Ghana', '288', 'GH')
     CRI = ('Republic of Costa Rica', 'Costa Rica', '188', 'CR')
