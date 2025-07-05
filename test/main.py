@@ -15,9 +15,9 @@ for country in available_countries:
             surname_first = True if country in [Country.CHN, Country.JPN, Country.KOR, Country.VNM] else False
             hyphenate = False if country in [Country.CHN, Country.KOR] else True
             name_dataset.append({
-                '国家/地区': country.official_name,
-                '性别': gender.value,
-                '全名': NameGenerator(country).generate(gender, surname_first=surname_first, hyphenate=hyphenate)
+                'Country/Region': country.official_name,
+                'Gender': gender.value,
+                'Full Name': NameGenerator(country).generate(gender, surname_first=surname_first, hyphenate=hyphenate)
             })
 
 pd.DataFrame(name_dataset).to_csv('name_dataset.csv', index=False)
