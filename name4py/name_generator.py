@@ -4,7 +4,6 @@ import random
 
 import gdown
 import requests
-from vortezwohl.random import next_seed
 from vortezwohl.concurrent import ThreadPool
 
 from name4py.enum.country import Country
@@ -47,8 +46,6 @@ class NameGenerator(object):
                  hyphenate: bool = True, seed: int | None = None) -> str:
         if seed:
             random.seed(seed)
-        else:
-            next_seed()
         first_name = random.sample(self._resource['first_name'][gender.value], k=1)[0]
         last_name = random.sample(self._resource['last_name'], k=1)[0] if not family_name else family_name
         while first_name in last_name:
