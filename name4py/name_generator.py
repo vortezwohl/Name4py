@@ -43,22 +43,25 @@ class NameGenerator(object):
         return self.generate(**kwargs)
 
     def generate(self, gender: Gender, family_name: str | None = None, surname_first: bool = False,
-                 hyphenate: bool = True, seed: int | None = None) -> str:
+                 hyphenate: bool = True, seed: int | None = None, return_respectively: bool = False) -> str | tuple:
         if seed:
             random.seed(seed)
         first_name = random.sample(self._resource['first_name'][gender.value], k=1)[0]
         last_name = random.sample(self._resource['last_name'], k=1)[0] if not family_name else family_name
         while first_name in last_name:
             first_name = random.sample(self._resource['first_name'][gender.value], k=1)[0]
+        if return_respectively:
+            return first_name, last_name
         segment = ' ' if hyphenate else ''
         if surname_first:
             first_name, last_name = last_name, first_name
         return f'{first_name}{segment}{last_name}'
 
     def batch_generate(self, batch_size: int, gender: Gender, family_name: str | None = None,
-                       surname_first: bool = False, hyphenate: bool = True, seed: int | None = None) -> list[str]:
+                       surname_first: bool = False, hyphenate: bool = True, seed: int | None = None,
+                       return_respectively: bool = False) -> list[str]:
         threads = ThreadPool()
         results = threads.map(job=self.generate,
-                              arguments=[(gender, family_name, surname_first, hyphenate, seed)] * batch_size)
+                              arguments=[(gender, family_name, surname_first, hyphenate, seed, return_respectively)] * batch_size)
         results = [_[2] for _ in results if len(_) > 2]
         return results
