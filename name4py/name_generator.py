@@ -63,5 +63,5 @@ class NameGenerator(object):
         threads = ThreadPool()
         results = threads.map(job=self.generate,
                               arguments=[(gender, family_name, surname_first, hyphenate, seed, return_respectively)] * batch_size)
-        results = [_[2] for _ in results if len(_) > 2]
+        results = [_.returns for _ in results if not _.error]
         return results
