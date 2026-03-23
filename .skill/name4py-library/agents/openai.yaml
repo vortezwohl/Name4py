@@ -1,0 +1,4 @@
+interface:
+  display_name: "Name4py Library"
+  short_description: "Use name4py to generate locale-aware personal names in Python."
+  default_prompt: "Use $name4py-library to add or update locale-aware personal name generation with name4py."
